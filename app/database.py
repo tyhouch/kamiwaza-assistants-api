@@ -34,8 +34,8 @@ def create_tables():
     # Import all models here to ensure they're registered with Base
     from app.models.assistant import Assistant
     from app.models.thread import Thread
+    from app.models.message import Message
     # Import additional models as they're created:
-    # from app.models.message import Message
     # from app.models.run import Run
     
     try:

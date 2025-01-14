@@ -9,6 +9,7 @@ from app.database import Base
 # Import all models here
 from app.models.assistant import Assistant
 from app.models.thread import Thread
+from app.models.message import Message
 
 load_dotenv()
 
