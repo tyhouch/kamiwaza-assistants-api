@@ -33,8 +33,8 @@ def create_tables():
     """Create all tables defined in models."""
     # Import all models here to ensure they're registered with Base
     from app.models.assistant import Assistant
+    from app.models.thread import Thread
     # Import additional models as they're created:
-    # from app.models.thread import Thread
     # from app.models.message import Message
     # from app.models.run import Run
     

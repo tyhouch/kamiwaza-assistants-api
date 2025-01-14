@@ -1,3 +1,5 @@
+# app/schemas/assistant.py
+
 from typing import Optional, List, Union, Dict, Any
 from pydantic import BaseModel, Field, validator
 from datetime import datetime

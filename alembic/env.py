@@ -5,7 +5,10 @@ from sqlalchemy import pool
 import os
 from dotenv import load_dotenv
 from app.database import Base
-from app.models import Assistant  
+
+# Import all models here
+from app.models.assistant import Assistant
+from app.models.thread import Thread
 
 load_dotenv()
 
@@ -19,7 +22,6 @@ config = context.config
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
-
 
 config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
 target_metadata = Base.metadata
