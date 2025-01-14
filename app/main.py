@@ -6,6 +6,7 @@ from fastapi.exceptions import RequestValidationError
 from app.routers.assistant import router as assistant_router
 from app.routers.thread import router as thread_router
 from app.routers.message import router as message_router
+from app.routers.run import router as run_router
 from app.database import create_tables
 
 # Initialize FastAPI app
@@ -77,7 +78,7 @@ async def health_check():
 app.include_router(assistant_router)
 app.include_router(thread_router)
 app.include_router(message_router)
-
+app.include_router(run_router)
 # Startup event to ensure database tables exist
 @app.on_event("startup")
 async def startup_event():

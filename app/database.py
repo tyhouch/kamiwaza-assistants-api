@@ -35,6 +35,7 @@ def create_tables():
     from app.models.assistant import Assistant
     from app.models.thread import Thread
     from app.models.message import Message
+    from app.models.run import Run
     # Import additional models as they're created:
     # from app.models.run import Run
     
