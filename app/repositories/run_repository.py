@@ -56,9 +56,9 @@ class RunRepository:
 
     def update_run_metadata(self, db: Session, run_id: UUID, metadata: dict) -> Run:
         db_run = self.get_run(db, run_id)
-        merged = db_run.metadata or {}
+        merged = db_run.meta_data or {}
         merged.update(metadata)
-        db_run.metadata = merged
+        db_run.meta_data = merged
 
         try:
             db.commit()

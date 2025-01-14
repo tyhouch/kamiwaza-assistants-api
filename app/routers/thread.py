@@ -9,8 +9,8 @@ from app.database import get_db
 from app.schemas.thread import ThreadCreate, ThreadUpdate, ThreadResponse
 from app.services.thread_service import ThreadService
 from app.repositories.thread_repository import ThreadRepository
-# from app.repositories.message_repository import MessageRepository
-# from app.services.message_service import MessageService
+from app.repositories.message_repository import MessageRepository
+from app.services.message_service import MessageService
 
 router = APIRouter(
     prefix="/v1/threads",
@@ -18,13 +18,10 @@ router = APIRouter(
 )
 
 def get_thread_service():
-    # In a real scenario, pass in needed repositories
-    # For initial setup:
     thread_repo = ThreadRepository()
-    # message_repo = MessageRepository()
-    # message_service = MessageService(message_repo)
-    # return ThreadService(thread_repo, message_service)
-    return ThreadService(thread_repo, None)
+    message_repo = MessageRepository()
+    message_service = MessageService(message_repo)
+    return ThreadService(thread_repo, message_service)
 
 @router.post("", response_model=ThreadResponse)
 def create_thread(

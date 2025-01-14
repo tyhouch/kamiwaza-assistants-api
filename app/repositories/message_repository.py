@@ -16,7 +16,7 @@ class MessageRepository:
             role=message_in.role,
             content=message_in.content,  # validated in schema
             attachments=message_in.attachments,
-            metadata=message_in.metadata or {}
+            meta_data=message_in.metadata or {}
         )
         try:
             db.add(db_message)
@@ -64,7 +64,9 @@ class MessageRepository:
         db_msg = self.get_message(db, message_id)
 
         if message_in.metadata is not None:
-            db_msg.metadata = message_in.metadata
+            merged = db_msg.meta_data or {}
+            merged.update(message_in.metadata)
+            db_msg.meta_data = merged
 
         try:
             db.commit()
